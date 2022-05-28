@@ -1,47 +1,21 @@
-*{
-    box-sizing: border-box;
-}
+let menuItem = document.querySelectorAll('.menu-list .menu-item');
 
+menuItem.forEach(elem=>{
+    elem.addEventListener('click',function(){
+        let activeItem = document.querySelector('.menu-item.active');
 
+        if(activeItem){
+            activeItem.classList.remove('active');
+        }
+        this.classList.add('active');
 
-.menu-list{
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0;
-    padding: 0;
-}
+        let activeTab = document.querySelector('.tab-item.active');
+        if(activeTab){
+            activeTab.classList.remove('active')
+        }
 
-.menu-list .menu-item{
-    width: 100px;
-    height: 60px;
-    background-color: rgb(208, 202, 202);
-    text-align: center;
-    list-style: none;
-    line-height: 60px;
-    border: 1px solid transparent;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.menu-list .menu-item:hover{
-    border-color: gray;
-}
-
-.menu-list .menu-item.active{
-    background-color: rgb(107, 106, 106);
-}
-
-.tab-list{
-    width: 300px;
-    margin: 0;
-    padding: 0;
-    position: relative;
-}
-
-.tab-list .tab-item{
-    position: absolute;
-    display: none;
-}
-.tab-list .tab-item.active{
-    display: block;
-}
+        let tabId = this.getAttribute('data-tab');
+        let selectedTab =  document.querySelector(tabId);
+        selectedTab.classList.add('active')
+    })
+})
